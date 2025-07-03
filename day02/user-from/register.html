@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration Form</title>
+</head>
+<body>
+    
+    <!-- 헤더 영역 입니다 -->
+    <header>
+        <svg width="100" height="100">
+            <circle cx="50" cy="50" r="40" stroke="white" stroke-width="4" fill="red" />
+        </svg>
+        <h1>User Registration</h1>
+    </header>
+    
+    <!-- 네이게이션 영역 입니다 -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <!-- 메인 영역 입니다 -->
+    <main>
+        <form action="/summit" method="post">
+        <section>
+        <h2>Registration Form</h2>
+        <!-- 이름과 이메일선택 영역 입니다 -->
+            <label for="text">이름</label>
+            <input type="text" name="user-name" id="text" placeholder="사용자 이름">
+        <div>
+            <label for="email">이메일</label>
+            <input type="email" name="user-email" id="email" placeholder="이메일 주소" autocomplete="email">
+        </div>
+        <br>
+
+        <!-- 비밀번호와 생년월일선택 영역 입니다 -->
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" name="user-password" id="password" placeholder="비밀번호">
+        </div>
+        <div>
+            <label for="date">생년월일</label>
+            <input type="date" name="user-birthday" id="date" placeholder="생년월일">
+        </div>
+        <br>
+        <div>
+            <label for="number">나이</label>
+            <input type="number" name="user-age" id="number" min="18" max="100" placeholder="나이">
+        <br>
+            <label for="level">만족도</label>
+            <input type="range" name="user-level" id="level" min="1" max="10" placeholder="서비스 만족도">
+        </div>
+
+            <br>
+            <!-- 성별선택 영역 입니다 -->
+            <p>성별을 선택해주세요</p>
+            <br>
+            <input type="radio" name="user-gender" id="gender-male" value="user-male">
+            <label for="gender-male">Male</label>
+
+            <input type="radio" name="user-gender" id="gender-female" value="user-female">
+            <label for="gender-female">Female</label>
+
+            <input type="radio" name="user-gender" id="gender-other" value="user-other">
+            <label for="gender-other">Other</label>
+
+            <br>
+            <br>
+            <!-- 취미선택 영역 입니다 -->
+            <p>취미를 선택해주세요<p>
+            <br>
+            <input type="checkbox" name="interest" id="coding" value="coding">
+            <label for="coding">Coding</label>
+
+            <input type="checkbox" name="interest" id="gaming" value="gaming">
+            <label for="gaming">Gaming</label>
+
+            <input type="checkbox" name="interest" id="reading" value="reading">
+            <label for="reading">Reading</label>
+        <hr>
+            <!-- 국가선택 영역 입니다 -->
+        <div>
+            <p>국가를 선택해주세요</p>
+            <br>
+            <select name="nation">
+                <option value="south-korea">South Korea</option>
+                <option value="USA">USA</option>
+                <option value="JAPAN">JAPAN</option>
+                <option value="CHINA">CHINA</option>
+                <option value="UK">UK</option>
+            </select>
+        </div>
+        </section>
+            <br>
+
+            <div>
+                <button type="submit">제출</button>
+                <button type="reset">초기화</button>
+            </div>
+        </form>
+        <hr>
+        <article>
+            <h4>Why Register?</h4>
+            <p>Registering allows you to access exclusive features.</p>
+        </article>
+    </main>
+        <hr>
+    <aside>
+        <p>관련 정보</p>
+        <ul>
+            <li><a href="#tips">Registration Tips</a></li>
+            <li><a href="#support">Contact Support</a></li>
+        </ul>
+    </aside>
+    <hr>
+    <!-- 푸터 영역 입니다 -->
+    <footer>
+        <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video>
+        <p><a href="#2025yourwebsite">&copy; 2025 Your Website.</a></p>
+    </footer>
+</body>
+</html>

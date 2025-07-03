@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1 {
+  text-align: center;
+  padding: 30px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#registration-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+[type="text"],
+[type="email"],
+[type="password"] {
+  width: 50%;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+/* 속성 선택자 입력 필드너비 */
+[type="submit"],
+[type="reset"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+[type="submit"]:hover,
+[type="reset"]:hover {
+  background-color: #0056b3;
+}
+
+/* 폼 > 자식요소 패딩값 */
+form p {
+  padding: 5px;
+}
+/* 폼 > 첫번째 자식요소 마진값 */
+form > p:first-child {
+  margin-top: 50px;
+}
+
+/* 폼 > 자식요소  입력 라벨 */
+form > p {
+  border-bottom: 1px solid #eee;
+}
+
+/* 라벨 인라인 요소 */
+label {
+  display: inline-block;
+  width: 100px;
+}
+
+/* 국가선택 입력 스타일 */
+select {
+  width: 50%;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+/* 가상 클래스 활용 */
+select:hover {
+  border-color: #007bff;
+}
+select option:first-child {
+  font-weight: bold;
+}
+
+/* 제목 뒤에 장식 요소 */
+h1::after {
+  content: "✨";
+  margin-left: 10px;
+}
+
+/* 구분선 역할 콘텐츠 */
+.form-group::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #ddd;
+  margin-top: 10px;
+}
+
+/* 필수 입력 라벨 */
+label[for="name"]::after,
+label[for="email"]::after,
+label[for="password"]::after {
+  content: "*";
+  color: red;
+  margin-left: 4px;
+}
