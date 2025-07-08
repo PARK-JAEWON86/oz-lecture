@@ -1,7 +1,7 @@
 // ── 1. 변수 선언 ──
 // var, let, const 각각 1회 이상 사용
 var userName = "박재원"; // 문자열 (string)
-let userAge = 39; // 숫자 (number)
+let userAge = 20; // 숫자 (number)
 const isStudent = false; // 불리언 (boolean)
 
 // ── 2. 문자열 처리 ──
