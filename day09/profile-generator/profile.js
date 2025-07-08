@@ -44,3 +44,28 @@ console.log(
 // 배열과 객체의 타입을 확인
 console.log("hobbies의 타입:", typeof hobbies); // object
 console.log("profile의 타입:", typeof profile); // object
+
+// ===== 도전 과제 =====
+
+// 1. null vs undefined 구분
+let undefinedValue; // 값이 아직 없음
+let nullValue = null; // 의도적으로 비어 있음
+
+console.log("undefinedValue 타입:", typeof undefinedValue); // "undefined"
+console.log("nullValue 타입:", typeof nullValue); // "object" (JS 특성)
+console.log("nullValue === undefinedValue?", nullValue === undefinedValue); // false
+
+// 2. 템플릿 문자열
+console.log(`템플릿 문자열 - 이름: ${userName}, 학생여부: ${isStudent}`);
+
+// 3. 추가 데이터 처리
+// 3-1. 배열에 null/undefined 섞기
+const moreHobbies = ["여행", null, undefined];
+console.log(`moreHobbies[0]:`, moreHobbies[0], "타입:", typeof moreHobbies[0]); // string
+console.log(`moreHobbies[1]:`, moreHobbies[1], "타입:", typeof moreHobbies[1]); // object
+console.log(`moreHobbies[2]:`, moreHobbies[2], "타입:", typeof moreHobbies[2]); // undefined
+
+// 3-2. 객체에 새 속성 추가 & null 확인
+profile.email = nullValue;
+console.log("profile.email:", profile.email);
+console.log("email이 null인가?", profile.email === nullValue); // true
