@@ -1,66 +1,78 @@
-// 사용자 입력
-let inputStr = prompt("점수를 입력하세요."); // 1) prompt 창에 나타난 입력값은 문자열(string)입니다.
-console.log("입력한 점수 : ", inputStr); // 2) 입력된 문자열을 콘솔에 찍어 봐서 확인해요.
-let input = parseInt(inputStr); // 3) parseInt()로 문자열을 정수(number)로 변환합니다.
-console.log("입력한 점수 재확인 : ", input); // 4) 숫자로 제대로 변환됐는지 다시 확인해요.
+// 0. 입력 받기 & 숫자 변환
+let inputStr = prompt("점수를 입력하세요."); // 문자열 입력
+console.log("입력값(문자열):", inputStr);
+let score = parseInt(inputStr); // 문자열 → 정수
+console.log("입력값(숫자):", score);
 
-const MAX_SCORE = 105; // 최대 점수 (100 + 보너스 5)
-let score; // 최종 점수를 저장할 변수 (let 사용)
-var grade; // 등급을 저장할 변수 (var 사용)
-
-// 1. 최종점수 계산 (5점 추가)
-score = input + 5; // 이항 산술 연산자 +를 사용해 5점을 더해 줍니다.
-
-// 2. 등급 결정 (if문)
-if (score >= 100) {
-  // score가 100 이상이면
-  grade = "S"; // S 등급
-} else if (score >= 90) {
-  // 90 이상 100 미만이면
-  grade = "A";
-} else if (score >= 80) {
-  // 80 이상 90 미만이면
-  grade = "B";
-} else if (score >= 70) {
-  // 70 이상 80 미만이면
-  grade = "C";
-} else if (score >= 60) {
-  // 60 이상 70 미만이면
-  grade = "D";
+// 1. 입력 유효성 검사 (논리 연산자 ||, 단항 부정 ! 사용)
+/*
+   - isNaN(score): 숫자가 아닌 경우
+   - score < 0 또는 score > 100: 범위 벗어날 경우
+*/
+if (isNaN(score) || score < 0 || score > 100) {
+  console.log("Invalid score! Please enter a number between 0 and 100.");
+  // 여기서 종료: 이후 코드는 실행되지 않음
 } else {
-  // 그 외 (60 미만)
-  grade = "F";
-}
+  // 2. 단항 산술: 1점 증가
+  score++; // score = score + 1
 
-// 3. 합격/불합격 여부 결정 (삼항 연산자)
-let status = score >= 60 ? "Pass" : "Fail"; // score가 60 이상이면 'Pass', 아니면 'Fail'
+  // 3. 복합 대입: 5점 보너스 추가
+  score += 5; // score = score + 5
 
-// 4. 결과 출력
-console.log("Final Score: " + score); // 최종 점수
-console.log("Grade: " + grade); // 등급
-console.log("Status: " + status); // 합격/불합격
+  // 4. 복합 대입: 10% 스케일링
+  score *= 1.1; // score = score * 1.1
 
-// 5. 등급에 따른 메시지 출력 (switch문)
-switch (grade) {
-  case "S":
-    console.log("Message: Super!!");
-    break;
-  case "A":
-    console.log("Message: Excellent work!");
-    break;
-  case "B":
-    console.log("Message: Good job!");
-    break;
-  case "C":
-    console.log("Message: Satisfactory performance.");
-    break;
-  case "D":
-    console.log("Message: Needs improvement.");
-    break;
-  case "F":
-    console.log("Message: Please try harder!");
-    break;
-  default:
-    // 혹시 grade 변수가 예상 밖의 값일 때를 대비한 안전 장치
-    console.log("Message: No message available.");
+  // 5. 최대치 제한: 100 초과 시 100으로 고정
+  if (score > 100) score = 100;
+
+  // (선택) 소수점 이하 버리기
+  score = Math.floor(score);
+
+  // 6. 등급 결정 (if / else if)
+  var grade;
+  if (score === 100) {
+    grade = "A"; // 100점도 A 등급으로 처리하되, 메시지는 아래 switch에서 특수 case!
+  } else if (score >= 90) {
+    grade = "A";
+  } else if (score >= 80) {
+    grade = "B";
+  } else if (score >= 70) {
+    grade = "C";
+  } else if (score >= 60) {
+    grade = "D";
+  } else {
+    grade = "F";
+  }
+
+  // 7. 합격/불합격 여부 (삼항 연산자)
+  let status = score >= 60 ? "Pass" : "Fail";
+
+  // 8. 결과 출력
+  console.log("Final Score:", score);
+  console.log("Grade:", grade);
+  console.log("Status:", status);
+
+  // 9. 등급별 메시지 (switch + 특수 case)
+  switch (true) {
+    case score === 100:
+      console.log("Message: Perfect Score!");
+      break;
+    case grade === "A":
+      console.log("Message: Excellent work!");
+      break;
+    case grade === "B":
+      console.log("Message: Good job!");
+      break;
+    case grade === "C":
+      console.log("Message: Satisfactory performance.");
+      break;
+    case grade === "D":
+      console.log("Message: Needs improvement.");
+      break;
+    case grade === "F":
+      console.log("Message: Please try harder!");
+      break;
+    default:
+      console.log("Message: No message available.");
+  }
 }
