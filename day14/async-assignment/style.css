@@ -1,0 +1,181 @@
+/* ────── 전역 설정 ────── */
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background-color: #202124;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.timer-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+/* ────── 헤더 ────── */
+.timer-header {
+  padding: 2rem 3rem;
+  background-color: #202124;
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer-header .btn {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+}
+
+/* ── 비활성 상태 ── */
+.timer-header .btn-primary {
+  background-color: #3c4043;
+  border-color: #3c4043;
+  color: #fff; /* 텍스트를 흰색으로 고정 */
+}
+
+/* ── 기본(비활성) 상태 ── */
+/* Solid Primary 버튼은 기존 어두운 배경 유지 */
+.timer-header .btn-primary {
+  background-color: #3c4043;
+  border-color: #3c4043;
+  color: #fff;
+}
+
+/* Outline Light 버튼(비활성)은 투명 배경 + 흰색 텍스트 유지 */
+.timer-header .btn-outline-light {
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+
+/* ── 활성(선택) 상태 ── */
+/* 활성된 Outline Light 버튼을 흰 배경/어두운 텍스트로 반전 */
+.timer-header .btn-outline-light.active {
+  background-color: #fff;
+  border-color: #fff;
+  color: #202124;
+}
+/* (아이콘 색도 함께 반전) */
+.timer-header .btn-outline-light.active i {
+  color: #202124 !important;
+}
+
+.icon-btn i {
+  color: #fff !important; /* icon-btn 내부 아이콘도 흰색으로 */
+}
+
+/* ────── 아이콘 표시 ────── */
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.icon-btn:focus {
+  outline: none;
+}
+
+/* ────── 본문 (타이머 표시) ────── */
+.timer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 커서 색, 밑줄 초기 숨김 */
+.timer-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* 중앙 정렬을 위해 너비 확보 */
+  min-width: 100px;
+  text-align: center;
+
+  /* caret(커서) 색 및 밑줄 */
+  caret-color: #fff;
+  border-bottom: 2px solid transparent;
+
+  /* SVG 위에 올라오도록 */
+  z-index: 1;
+
+  /* 배경 투명, 글자 흰색 */
+  background: transparent;
+  color: #fff;
+}
+
+/* 포커스 시 밑줄 보이기 */
+.timer-display:focus {
+  outline: none;
+  border-bottom-color: #fff;
+}
+
+/* 링 바로 아래 힌트/에러 텍스트 */
+.error-text {
+  margin-top: 1.5rem; /* 링 대략 하단 중앙 */
+  min-height: 1.2em;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #aaa; /* 기본 힌트 색 */
+}
+
+.error-text.error {
+  color: #ff6b6b !important;
+}
+
+.progress-wrap {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 2rem;
+}
+
+.progress-wrap svg.progress-ring-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timer-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  line-height: 1;
+}
+/* 링 바로 아래 힌트/에러 텍스트 */
+.error-text {
+  color: #aaa; /* 기본 힌트는 연한 회색 */
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  min-height: 1.2em; /* 자리 고정 */
+}
+
+/* 에러 상태일 때 진한 붉은색으로 */
+.error-text.error {
+  color: #ff6b6b !important;
+}
+
+/* ────── 하단 컨트롤 ────── */
+.timer-controls {
+  padding: 3rem;
+  background-color: #202124;
+  border-top: none;
+}
+
+.timer-controls .btn {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 1.5rem;
+}

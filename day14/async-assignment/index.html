@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Custom Timer UI</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons (볼륨, 전체화면 아이콘용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="timer-app">
+      <!-- ────── timer-header 부분에서 버튼 그룹만 교체 ────── -->
+      <div
+        class="timer-header d-flex justify-content-between align-items-center mb-4"
+      >
+        <!-- 버튼 그룹 -->
+        <div class="d-flex gap-2">
+          <!-- ① 타이머: 기본 활성 모드로, outline + active -->
+          <button
+            id="timerBtn"
+            class="btn btn-outline-light active"
+            type="button"
+            title="타이머 모드"
+          >
+            <i class="bi bi-hourglass me-1"></i>타이머
+          </button>
+          <!-- ② 스톱워치: 비활성 모드로, solid primary -->
+          <button
+            id="stopwatchBtn"
+            class="btn btn-primary"
+            type="button"
+            title="스톱워치 모드"
+          >
+            <i class="bi bi-stopwatch me-1"></i>스톱워치
+          </button>
+        </div>
+
+        <!-- (기존) 소리·전체화면 아이콘 그룹 -->
+        <div class="d-flex align-items-center">
+          <button id="soundBtn" class="icon-btn me-3" title="소리 토글">
+            <i id="soundIcon" class="bi bi-volume-up-fill fs-4"></i>
+          </button>
+          <button id="fullscreenBtn" class="icon-btn" title="전체화면">
+            <i id="fullscreenIcon" class="bi bi-fullscreen fs-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 타이머 표시 영역 -->
+      <div class="timer-content">
+        <!-- SVG 링 (나중에 JS로 진행률 제어) -->
+        <div class="progress-wrap">
+          <svg
+            class="progress-ring-svg"
+            viewBox="0 0 240 240"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <circle
+              cx="120"
+              cy="120"
+              r="108"
+              stroke="#3c4043"
+              stroke-width="4"
+              fill="none"
+            />
+            <circle
+              class="progress-ring__circle"
+              cx="120"
+              cy="120"
+              r="108"
+              stroke="#8ab4f8"
+              stroke-width="4"
+              fill="none"
+              stroke-dasharray="678"
+              stroke-dashoffset="678"
+            />
+          </svg>
+          <!-- 중앙 시간 텍스트 -->
+          <div
+            id="timerDisplay"
+            class="timer-display"
+            contenteditable="true"
+            spellcheck="false"
+            tabindex="0"
+          >
+            00:00
+          </div>
+        </div>
+        <!-- 이 위치가 중요합니다: progress-wrap 바로 아래 -->
+        <div id="hintText" class="error-text">1~10초를 입력하세요</div>
+      </div>
+
+      <!-- ────── 하단 컨트롤 (index.html) ────── -->
+      <div class="timer-controls">
+        <div class="d-flex gap-2">
+          <!-- ① 플레이 / 일시정지 토글 버튼 -->
+          <button id="playPause" class="btn btn-primary flex-fill">
+            <i class="bi bi-play-fill"></i>
+          </button>
+          <!-- ② 초기화 버튼 (초기에는 숨김) -->
+          <button
+            id="resetBtn"
+            class="btn btn-secondary flex-fill d-none"
+            title="타이머 초기화"
+          >
+            <i class="bi bi-arrow-counterclockwise"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="async_assignment.js"></script>
+  </body>
+</html>
